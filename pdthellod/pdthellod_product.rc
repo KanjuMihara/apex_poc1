@@ -1,0 +1,6 @@
+service pdthellod /apex/com.oem.pdthellod/bin/pdthellod
+    class late_start
+    user root
+    group root
+    seclabel u:r:pdthellod:s0
+    

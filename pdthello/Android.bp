@@ -1,0 +1,32 @@
+// product/oem/apex/pdthello/Android.bp
+
+cc_binary {
+    name: "pdthello",
+    product_specific: true,
+    srcs: ["pdthello.c"],
+    stl: "none",
+    min_sdk_version: "29",
+}
+
+apex_key {
+    name: "com.oem.pdthello.key",
+    public_key: "keys/com.oem.pdthello.avbpubkey",
+    private_key: "keys/com.oem.pdthello.pem",
+}
+
+apex {
+    name: "com.oem.pdthello",
+    manifest: "apex_manifest.json",
+    key: "com.oem.pdthello.key",
+
+    product_specific: true,
+    updatable: true,
+
+    // APEX側も明示（合わせる）
+    min_sdk_version: "29",
+
+    binaries: ["pdthello"],
+
+    // ★これを追加
+    file_contexts: "file_contexts",
+}

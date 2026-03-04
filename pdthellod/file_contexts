@@ -1,0 +1,3 @@
+/bin/pdthellod          u:object_r:pdthellod_exec:s0
+/etc/fileA             u:object_r:pdthellod_file_a_v2:s0
+(/.*)?                  u:object_r:system_file:s0

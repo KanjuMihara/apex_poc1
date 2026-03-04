@@ -1,0 +1,44 @@
+cc_binary {
+    name: "pdthellod",
+    product_specific: true,
+    srcs: ["pdthellod.c"],
+    shared_libs: ["liblog"],
+    stl: "none",
+    min_sdk_version: "29",
+}
+
+apex_key {
+    name: "com.oem.pdthellod.key",
+    public_key: "keys/com.oem.pdthellod.avbpubkey",
+    private_key: "keys/com.oem.pdthellod.pem",
+}
+
+prebuilt_etc {
+    name: "pdthellod_product_rc",
+    src: "pdthellod_product.rc",
+    filename: "pdthellod.rc",
+    sub_dir: "init",
+    product_specific: true,
+}
+
+prebuilt_etc {
+    name: "pdthellod_file_a",
+    src: "etc/fileA",
+    filename: "fileA",
+    installable: false,
+}
+
+apex {
+    name: "com.oem.pdthellod",
+    manifest: "apex_manifest.json",
+    key: "com.oem.pdthellod.key",
+
+    product_specific: true,
+    updatable: true,
+    min_sdk_version: "29",
+
+    binaries: ["pdthellod"],
+    prebuilts: ["pdthellod_file_a"],
+
+    file_contexts: "file_contexts",
+}

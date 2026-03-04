@@ -1,0 +1,4 @@
+# Never commit generated APEX signing keys.
+**/keys/*.pem
+**/keys/*.avbpubkey
+

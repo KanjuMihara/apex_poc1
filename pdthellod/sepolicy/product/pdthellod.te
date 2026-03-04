@@ -1,0 +1,12 @@
+type pdthellod, domain, coredomain;
+type pdthellod_exec, exec_type, system_file_type, file_type;
+type pdthellod_file_a_v1, file_type, system_file_type;
+type pdthellod_file_a_v2, file_type, system_file_type;
+type pdthellod_file_a_v3, file_type, system_file_type;
+type pdthellod_file_a_v4, file_type, system_file_type;
+
+init_daemon_domain(pdthellod)
+
+allow pdthellod system_file:dir search;
+allow pdthellod pdthellod_file_a_v2:file r_file_perms;
+allow pdthellod pdthellod_file_a_v4:file r_file_perms;

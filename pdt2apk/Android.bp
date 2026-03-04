@@ -1,0 +1,38 @@
+apex_key {
+    name: "com.oem.pdt2apk.key",
+    public_key: "keys/com.oem.pdt2apk.avbpubkey",
+    private_key: "keys/com.oem.pdt2apk.pem",
+}
+
+android_app {
+    name: "Pdt2ApkApp1",
+    manifest: "apk/pocapp1/AndroidManifest.xml",
+    sdk_version: "current",
+    min_sdk_version: "29",
+    apex_available: ["com.oem.pdt2apk"],
+}
+
+android_app {
+    name: "Pdt2ApkApp2",
+    manifest: "apk/pocapp2/AndroidManifest.xml",
+    sdk_version: "current",
+    min_sdk_version: "29",
+    apex_available: ["com.oem.pdt2apk"],
+}
+
+apex {
+    name: "com.oem.pdt2apk",
+    manifest: "apex_manifest.json",
+    key: "com.oem.pdt2apk.key",
+
+    product_specific: true,
+    updatable: true,
+    min_sdk_version: "29",
+
+    apps: [
+        "Pdt2ApkApp1",
+        "Pdt2ApkApp2",
+    ],
+
+    file_contexts: "file_contexts",
+}
